@@ -8,4 +8,4 @@
 #define MASTER_LEFT
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0
-#define TAPPING_TERM 350 // milliseconds
+#define TAPPING_TERM 375 // milliseconds
