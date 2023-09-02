@@ -23,7 +23,7 @@ const uint16_t PROGMEM right_kl[] = { LALT_T(KC_K), LGUI_T(KC_L), COMBO_END };
 const uint16_t PROGMEM right_commdot[] = { KC_COMM, KC_DOT, COMBO_END };
 
 combo_t key_combos[] = {
-    COMBO(left_thumb, LT(MEDIA, KC_DEL)),
+    COMBO(left_thumb, LT(MEDIA, KC_ENT)),
     COMBO(right_thumb, LT(FUNC, KC_TAB)),
     COMBO(left_sd, KC_TAB),
     COMBO(left_df, KC_LPRN),
