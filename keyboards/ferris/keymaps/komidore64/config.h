@@ -6,6 +6,8 @@
 #undef TAPPING_TERM
 
 #define MASTER_LEFT
+#define MOUSEKEY_INTERAL 33
+#define MOUSEKEY_MAX_SPEED 7
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0
-#define TAPPING_TERM 375 // milliseconds
+#define TAPPING_TERM 400
