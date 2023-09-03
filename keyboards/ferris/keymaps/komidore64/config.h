@@ -13,11 +13,11 @@
 #define MOUSEKEY_MAX_SPEED 7
 
 // the rest
-// #undef COMBO_TERM
+#undef COMBO_TERM
 #undef PERMISSIVE_HOLD
 #undef QUICK_TAP_TERM
 #undef TAPPING_TERM
-// #define COMBO_TERM 50
+#define COMBO_TERM 50
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0
 #define TAPPING_TERM 400

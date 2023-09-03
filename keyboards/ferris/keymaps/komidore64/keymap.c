@@ -2,6 +2,22 @@
 
 // #include "version.h"
 
+// left hand
+#define ALPHA_A SFT_T(KC_A)
+#define ALPHA_S LGUI_T(KC_S)
+#define ALPHA_D LALT_T(KC_D)
+#define ALPHA_F LCTL_T(KC_F)
+#define ALPHA_ESC LT(MOUSE, KC_ESC)
+#define ALPHA_BSPC LT(NAV, KC_BSPC)
+
+// right hand
+#define ALPHA_J LCTL_T(KC_J)
+#define ALPHA_K LALT_T(KC_K)
+#define ALPHA_L LGUI_T(KC_L)
+#define ALPHA_QUOT LSFT_T(KC_QUOT)
+#define ALPHA_SPC LT(SYM, KC_SPC)
+#define ALPHA_TAB LT(NUM, KC_TAB)
+
 enum layers {
     ALPHA,
     FUNC,
@@ -12,21 +28,19 @@ enum layers {
     SYM,
 };
 
-const uint16_t PROGMEM left_thumb[] = { LT(MOUSE, KC_ESC), LT(NAV, KC_BSPC), COMBO_END };
-const uint16_t PROGMEM right_thumb[] = { LT(SYM, KC_SPC), LT(NUM, KC_ESC), COMBO_END };
-const uint16_t PROGMEM left_sd[] = { LGUI_T(KC_S), LALT_T(KC_D), COMBO_END };
-const uint16_t PROGMEM left_df[] = { LALT_T(KC_D), LCTL_T(KC_F), COMBO_END };
+const uint16_t PROGMEM left_thumb[] = { ALPHA_ESC, ALPHA_BSPC, COMBO_END };
+const uint16_t PROGMEM right_thumb[] = { ALPHA_SPC, ALPHA_TAB, COMBO_END };
+const uint16_t PROGMEM left_df[] = { ALPHA_D, ALPHA_F, COMBO_END };
 const uint16_t PROGMEM left_cv[] = { KC_C, KC_V, COMBO_END };
-const uint16_t PROGMEM right_jk[] = { LCTL_T(KC_J), LALT_T(KC_K), COMBO_END };
+const uint16_t PROGMEM right_jk[] = { ALPHA_J, ALPHA_K, COMBO_END };
 const uint16_t PROGMEM right_mcomm[] = { KC_M, KC_COMM, COMBO_END };
-const uint16_t PROGMEM right_kl[] = { LALT_T(KC_K), LGUI_T(KC_L), COMBO_END };
+const uint16_t PROGMEM right_kl[] = { ALPHA_K, ALPHA_L, COMBO_END };
 const uint16_t PROGMEM right_commdot[] = { KC_COMM, KC_DOT, COMBO_END };
-const uint16_t PROGMEM leftmost_column[] = { KC_Q, SFT_T(KC_A), KC_Z, COMBO_END, };
+const uint16_t PROGMEM leftmost_column[] = { KC_Q, ALPHA_A, KC_Z, COMBO_END, };
 
 combo_t key_combos[] = {
-    COMBO(left_thumb, LT(MEDIA, KC_ENT)),
-    COMBO(right_thumb, LT(FUNC, KC_TAB)),
-    COMBO(left_sd, KC_TAB),
+    COMBO(left_thumb, MO(MEDIA)),
+    COMBO(right_thumb, MO(FUNC)),
     COMBO(left_df, KC_LPRN),
     COMBO(left_cv, KC_RPRN),
     COMBO(right_jk, KC_MINS),
@@ -39,10 +53,10 @@ combo_t key_combos[] = {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ALPHA] = LAYOUT(
-        KC_Q,        KC_W,         KC_E,         KC_R,              KC_T,             /* */ KC_Y,            KC_U,            KC_I,         KC_O,         KC_P,
-        SFT_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D), LCTL_T(KC_F),      KC_G,             /* */ KC_H,            LCTL_T(KC_J),    LALT_T(KC_K), LGUI_T(KC_L), LSFT_T(KC_QUOT),
-        KC_Z,        KC_X,         KC_C,         KC_V,              KC_B,             /* */ KC_N,            KC_M,            KC_COMM,      KC_DOT,       KC_SLSH,
-                                                 LT(MOUSE, KC_ESC), LT(NAV, KC_BSPC), /* */ LT(SYM, KC_SPC), LT(NUM, KC_ESC)
+        KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,       /* */ KC_Y,      KC_U,      KC_I,    KC_O,    KC_P,
+        ALPHA_A, ALPHA_S, ALPHA_D, ALPHA_F,   KC_G,       /* */ KC_H,      ALPHA_J,   ALPHA_K, ALPHA_L, ALPHA_QUOT,
+        KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,       /* */ KC_N,      KC_M,      KC_COMM, KC_DOT,  KC_SLSH,
+                                   ALPHA_ESC, ALPHA_BSPC, /* */ ALPHA_SPC, ALPHA_TAB
     ),
 
     [FUNC] = LAYOUT(
