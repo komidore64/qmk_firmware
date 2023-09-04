@@ -29,8 +29,12 @@ enum layers {
 };
 
 // left hand
+const uint16_t PROGMEM alpha_w_e[] = { KC_W, KC_E, COMBO_END };
+const uint16_t PROGMEM alpha_e_r[] = { KC_E, KC_R, COMBO_END };
+const uint16_t PROGMEM alpha_s_d[] = { ALPHA_S, ALPHA_D, COMBO_END };
 const uint16_t PROGMEM alpha_d_f[] = { ALPHA_D, ALPHA_F, COMBO_END };
-const uint16_t PROGMEM alpha_c_v[] = { KC_C, KC_V, COMBO_END };
+// const uint16_t PROGMEM alpha_x_c[] = { KC_X, KC_C, COMBO_END };
+// const uint16_t PROGMEM alpha_c_v[] = { KC_C, KC_V, COMBO_END };
 const uint16_t PROGMEM alpha_esc_bspc[] = { ALPHA_ESC, ALPHA_BSPC, COMBO_END };
 const uint16_t PROGMEM alpha_q_a_z[] = { KC_Q, ALPHA_A, KC_Z, COMBO_END, };
 
@@ -43,8 +47,10 @@ const uint16_t PROGMEM alpha_spc_tab[] = { ALPHA_SPC, ALPHA_TAB, COMBO_END };
 
 combo_t key_combos[] = {
     // left hand
-    COMBO(alpha_d_f, KC_LPRN),
-    COMBO(alpha_c_v, KC_RPRN),
+    COMBO(alpha_w_e, KC_LPRN), // (
+    COMBO(alpha_e_r, KC_RPRN), // )
+    COMBO(alpha_s_d, MT(MOD_LGUI | MOD_LALT, KC_LBRC)), // [ / {
+    COMBO(alpha_d_f, MT(MOD_LALT | MOD_LCTL, KC_RBRC)), // ] / }
     COMBO(alpha_esc_bspc, MO(MEDIA)),
     COMBO(alpha_q_a_z, QK_BOOT),
 
@@ -94,14 +100,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NUM] = LAYOUT(
-        KC_LBRC, KC_7, KC_8, KC_9,   KC_RBRC, /* */ KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_7, KC_8, KC_9,   KC_NO,   /* */ KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_SCLN, KC_4, KC_5, KC_6,   KC_EQL,  /* */ KC_NO, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT,
         KC_GRV,  KC_1, KC_2, KC_3,   KC_BSLS, /* */ KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
                              KC_DOT, KC_0,    /* */ KC_NO, KC_TRNS
     ),
 
     [SYM] = LAYOUT(
-        KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_AMPR, KC_ASTR, KC_NO,   KC_NO,   /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, /* */ KC_NO,   KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT,
         KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                    KC_NO,   KC_NO,   /* */ KC_TRNS, KC_NO
