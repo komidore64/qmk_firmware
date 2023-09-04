@@ -28,26 +28,32 @@ enum layers {
     SYM,
 };
 
-const uint16_t PROGMEM left_thumb[] = { ALPHA_ESC, ALPHA_BSPC, COMBO_END };
-const uint16_t PROGMEM right_thumb[] = { ALPHA_SPC, ALPHA_TAB, COMBO_END };
-const uint16_t PROGMEM left_df[] = { ALPHA_D, ALPHA_F, COMBO_END };
-const uint16_t PROGMEM left_cv[] = { KC_C, KC_V, COMBO_END };
-const uint16_t PROGMEM right_jk[] = { ALPHA_J, ALPHA_K, COMBO_END };
-const uint16_t PROGMEM right_mcomm[] = { KC_M, KC_COMM, COMBO_END };
-const uint16_t PROGMEM right_kl[] = { ALPHA_K, ALPHA_L, COMBO_END };
-const uint16_t PROGMEM right_commdot[] = { KC_COMM, KC_DOT, COMBO_END };
-const uint16_t PROGMEM leftmost_column[] = { KC_Q, ALPHA_A, KC_Z, COMBO_END, };
+// left hand
+const uint16_t PROGMEM alpha_d_f[] = { ALPHA_D, ALPHA_F, COMBO_END };
+const uint16_t PROGMEM alpha_c_v[] = { KC_C, KC_V, COMBO_END };
+const uint16_t PROGMEM alpha_esc_bspc[] = { ALPHA_ESC, ALPHA_BSPC, COMBO_END };
+const uint16_t PROGMEM alpha_q_a_z[] = { KC_Q, ALPHA_A, KC_Z, COMBO_END, };
+
+// right hand
+const uint16_t PROGMEM alpha_j_k[] = { ALPHA_J, ALPHA_K, COMBO_END };
+const uint16_t PROGMEM alpha_m_comm[] = { KC_M, KC_COMM, COMBO_END };
+const uint16_t PROGMEM alpha_k_l[] = { ALPHA_K, ALPHA_L, COMBO_END };
+const uint16_t PROGMEM alpha_comm_dot[] = { KC_COMM, KC_DOT, COMBO_END };
+const uint16_t PROGMEM alpha_spc_tab[] = { ALPHA_SPC, ALPHA_TAB, COMBO_END };
 
 combo_t key_combos[] = {
-    COMBO(left_thumb, MO(MEDIA)),
-    COMBO(right_thumb, MO(FUNC)),
-    COMBO(left_df, KC_LPRN),
-    COMBO(left_cv, KC_RPRN),
-    COMBO(right_jk, KC_MINS),
-    COMBO(right_mcomm, KC_UNDS),
-    COMBO(right_kl, KC_SCLN),
-    COMBO(right_commdot, KC_COLN),
-    COMBO(leftmost_column, QK_BOOT),
+    // left hand
+    COMBO(alpha_d_f, KC_LPRN),
+    COMBO(alpha_c_v, KC_RPRN),
+    COMBO(alpha_esc_bspc, MO(MEDIA)),
+    COMBO(alpha_q_a_z, QK_BOOT),
+
+    // right hand
+    COMBO(alpha_j_k, KC_MINS),
+    COMBO(alpha_m_comm, KC_UNDS),
+    COMBO(alpha_k_l, KC_SCLN),
+    COMBO(alpha_comm_dot, KC_COLN),
+    COMBO(alpha_spc_tab, MO(FUNC)),
 };
 
 // clang-format off
@@ -81,9 +87,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NAV] = LAYOUT(
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   /* */ KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
-        KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, KC_NO,   /* */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
-        KC_NO,   KC_CUT,  KC_COPY, KC_PSTE, KC_NO,   /* */ KC_NO,   KC_NO,   C(KC_P), C(KC_N), KC_DEL,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   /* */ KC_HOME, KC_PGDN, KC_PGUP,    KC_END,     KC_INS,
+        KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, KC_NO,   /* */ KC_LEFT, KC_DOWN, KC_UP,      KC_RGHT,    CW_TOGG,
+        KC_NO,   KC_CUT,  KC_COPY, KC_PSTE, KC_NO,   /* */ KC_NO,   KC_NO,   LCTL(KC_P), LCTL(KC_N), KC_DEL,
                                    KC_NO,   KC_TRNS, /* */ KC_ENT,  KC_NO
     ),
 
