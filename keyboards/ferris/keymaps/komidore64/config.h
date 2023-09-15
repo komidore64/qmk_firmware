@@ -9,3 +9,4 @@
 #define COMBO_TERM 50
 #define ONESHOT_TAP_TOGGLE 3
 #define PERMISSIVE_HOLD
+#define QUICK_TAP_TERM 0
