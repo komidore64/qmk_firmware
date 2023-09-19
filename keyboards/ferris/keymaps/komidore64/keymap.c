@@ -60,54 +60,60 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 // left hand - two finger horizontal
-const uint16_t PROGMEM alpha_x_c[]        = { KC_X,    KC_C,             COMBO_END };
-const uint16_t PROGMEM alpha_c_v[]        = { KC_C,    KC_V,             COMBO_END };
+const uint16_t PROGMEM alpha_x_c[]        = { KC_X,    KC_C,                      COMBO_END };
+const uint16_t PROGMEM alpha_c_v[]        = { KC_C,    KC_V,                      COMBO_END };
 
 // left hand - two finger vertical
-const uint16_t PROGMEM alpha_a_z[]        = { KC_A,    KC_Z,             COMBO_END };
-const uint16_t PROGMEM alpha_s_x[]        = { KC_S,    KC_X,             COMBO_END };
-const uint16_t PROGMEM alpha_d_c[]        = { KC_D,    KC_C,             COMBO_END };
-const uint16_t PROGMEM alpha_f_v[]        = { KC_F,    KC_V,             COMBO_END };
+const uint16_t PROGMEM alpha_a_z[]        = { KC_A,    KC_Z,                      COMBO_END };
+const uint16_t PROGMEM alpha_s_x[]        = { KC_S,    KC_X,                      COMBO_END };
+const uint16_t PROGMEM alpha_d_c[]        = { KC_D,    KC_C,                      COMBO_END };
+const uint16_t PROGMEM alpha_f_v[]        = { KC_F,    KC_V,                      COMBO_END };
 
 // left hand - three finger horizontal
-const uint16_t PROGMEM alpha_s_d_f[]      = { KC_S,    KC_D,    KC_F,    COMBO_END };
+const uint16_t PROGMEM alpha_s_d_f[]      = { KC_S,    KC_D,    KC_F,             COMBO_END };
 
 // left hand - three finger vertical
-const uint16_t PROGMEM alpha_q_a_z[]      = { KC_Q,    KC_A,    KC_Z,    COMBO_END };
+const uint16_t PROGMEM alpha_q_a_z[]      = { KC_Q,    KC_A,    KC_Z,             COMBO_END };
 
 
 // right hand - two finger horizontal
-const uint16_t PROGMEM alpha_j_k[]        = { KC_J,    KC_K,             COMBO_END };
-const uint16_t PROGMEM alpha_k_l[]        = { KC_K,    KC_L,             COMBO_END };
-const uint16_t PROGMEM alpha_m_comm[]     = { KC_M,    KC_COMM,          COMBO_END };
-const uint16_t PROGMEM alpha_comm_dot[]   = { KC_COMM, KC_DOT,           COMBO_END };
-const uint16_t PROGMEM alpha_spc_tab[]    = { AL_SPC,  AL_TAB,           COMBO_END };
+const uint16_t PROGMEM alpha_j_k[]        = { KC_J,    KC_K,                      COMBO_END };
+const uint16_t PROGMEM alpha_k_l[]        = { KC_K,    KC_L,                      COMBO_END };
+const uint16_t PROGMEM alpha_m_comm[]     = { KC_M,    KC_COMM,                   COMBO_END };
+const uint16_t PROGMEM alpha_comm_dot[]   = { KC_COMM, KC_DOT,                    COMBO_END };
+const uint16_t PROGMEM alpha_spc_tab[]    = { AL_SPC,  AL_TAB,                    COMBO_END };
 
 // right hand - two finger vertical
-const uint16_t PROGMEM alpha_j_m[]        = { KC_J,    KC_M,             COMBO_END };
-const uint16_t PROGMEM alpha_k_comm[]     = { KC_K,    KC_COMM,          COMBO_END };
-const uint16_t PROGMEM alpha_l_dot[]      = { KC_L,    KC_DOT,           COMBO_END };
-const uint16_t PROGMEM alpha_quot_slsh[]  = { KC_QUOT, KC_SLSH,          COMBO_END };
+const uint16_t PROGMEM alpha_j_m[]        = { KC_J,    KC_M,                      COMBO_END };
+const uint16_t PROGMEM alpha_k_comm[]     = { KC_K,    KC_COMM,                   COMBO_END };
+const uint16_t PROGMEM alpha_l_dot[]      = { KC_L,    KC_DOT,                    COMBO_END };
+const uint16_t PROGMEM alpha_quot_slsh[]  = { KC_QUOT, KC_SLSH,                   COMBO_END };
+
+// multi-combo holds
+const uint16_t PROGMEM alpha_d_f_c_v[]    = { KC_D,    KC_F,    KC_C,    KC_V,    COMBO_END };
+const uint16_t PROGMEM alpha_j_k_m_comm[] = { KC_J,    KC_K,    KC_M,    KC_COMM, COMBO_END };
 
 combo_t key_combos[] = {
     // left hand
-    COMBO(alpha_x_c,        KC_TILD  ),
-    COMBO(alpha_c_v,        KC_GRV   ),
-    COMBO(alpha_a_z,        KC_LSFT  ),
-    COMBO(alpha_s_x,        KC_LGUI  ),
-    COMBO(alpha_d_c,        KC_LALT  ),
-    COMBO(alpha_f_v,        KC_LCTL  ),
-    COMBO(alpha_s_d_f,      KC_ESC   ),
-    COMBO(alpha_q_a_z,      QK_BOOT  ), // bootloader
+    COMBO(alpha_x_c,        KC_TILD       ),
+    COMBO(alpha_c_v,        KC_GRV        ),
+    COMBO(alpha_a_z,        KC_LSFT       ),
+    COMBO(alpha_s_x,        KC_LGUI       ),
+    COMBO(alpha_d_c,        KC_LALT       ),
+    COMBO(alpha_f_v,        KC_LCTL       ),
+    COMBO(alpha_s_d_f,      KC_ESC        ),
+    COMBO(alpha_q_a_z,      QK_BOOT       ), // bootloader
+    COMBO(alpha_d_f_c_v,    LCTL(KC_LALT) ),
 
     // right hand
-    COMBO(alpha_j_k,        KC_MINS  ),
-    COMBO(alpha_k_l,        KC_SCLN  ),
-    COMBO(alpha_m_comm,     KC_EQL   ),
-    COMBO(alpha_comm_dot,   KC_BSLS  ),
-    COMBO(alpha_spc_tab,    MO(FUNC) ),
-    COMBO(alpha_j_m,        KC_LCTL  ),
-    COMBO(alpha_k_comm,     KC_LALT  ),
-    COMBO(alpha_l_dot,      KC_LGUI  ),
-    COMBO(alpha_quot_slsh,  KC_LSFT  ),
+    COMBO(alpha_j_k,        KC_MINS       ),
+    COMBO(alpha_k_l,        KC_SCLN       ),
+    COMBO(alpha_m_comm,     KC_EQL        ),
+    COMBO(alpha_comm_dot,   KC_BSLS       ),
+    COMBO(alpha_spc_tab,    MO(FUNC)      ),
+    COMBO(alpha_j_m,        KC_LCTL       ),
+    COMBO(alpha_k_comm,     KC_LALT       ),
+    COMBO(alpha_l_dot,      KC_LGUI       ),
+    COMBO(alpha_quot_slsh,  KC_LSFT       ),
+    COMBO(alpha_j_k_m_comm, LCTL(KC_LALT) ),
 };
