@@ -6,7 +6,7 @@
 #define AL_SFT  OSM(MOD_LSFT)
 #define AL_BSPC LT(NAV, KC_BSPC)
 #define AL_SPC  LT(SYM, KC_SPC)
-#define AL_TAB  LT(NUM, KC_TAB)
+#define AL_ESC  LT(NUM, KC_ESC)
 
 // nav layer macros
 #define NA_COMM LCTL(KC_P)
@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    /* */ KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    /* */ KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT,
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    /* */ KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-                                   AL_SFT,  AL_BSPC, /* */ AL_SPC,  AL_TAB
+                                   AL_SFT,  AL_BSPC, /* */ AL_SPC,  AL_ESC
     ),
 
     [FUNC] = LAYOUT(
@@ -81,7 +81,7 @@ const uint16_t PROGMEM alpha_j_k[]        = { KC_J,    KC_K,                    
 const uint16_t PROGMEM alpha_k_l[]        = { KC_K,    KC_L,                      COMBO_END };
 const uint16_t PROGMEM alpha_m_comm[]     = { KC_M,    KC_COMM,                   COMBO_END };
 const uint16_t PROGMEM alpha_comm_dot[]   = { KC_COMM, KC_DOT,                    COMBO_END };
-const uint16_t PROGMEM alpha_spc_tab[]    = { AL_SPC,  AL_TAB,                    COMBO_END };
+const uint16_t PROGMEM alpha_spc_tab[]    = { AL_SPC,  AL_ESC,                    COMBO_END };
 
 // right hand - two finger vertical
 const uint16_t PROGMEM alpha_j_m[]        = { KC_J,    KC_M,                      COMBO_END };
@@ -101,7 +101,7 @@ combo_t key_combos[] = {
     COMBO(alpha_s_x,        KC_LGUI       ),
     COMBO(alpha_d_c,        KC_LALT       ),
     COMBO(alpha_f_v,        KC_LCTL       ),
-    COMBO(alpha_s_d_f,      KC_ESC        ),
+    COMBO(alpha_s_d_f,      KC_TAB        ),
     COMBO(alpha_q_a_z,      QK_BOOT       ), // bootloader
     COMBO(alpha_d_f_c_v,    LCTL(KC_LALT) ),
 
