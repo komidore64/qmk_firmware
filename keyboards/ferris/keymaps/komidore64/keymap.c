@@ -1,121 +1,58 @@
 #include QMK_KEYBOARD_H
 
-// #include "version.h"
-
-// alpha layer macros
-#define AL_SFT  OSM(MOD_LSFT)
-#define AL_BSPC LT(NAV, KC_BSPC)
-#define AL_SPC  LT(SYM, KC_SPC)
-#define AL_ENT  LT(NUM, KC_ENT)
-
-// nav layer macros
-#define NA_COMM LCTL(KC_P)
-#define NA_DOT  LCTL(KC_N)
-
 enum layers {
-    ALPHA,
-    FUNC,
-    NAV,
-    NUM,
+    BASE,
     SYM,
+    EXT,
+    NUM,
 };
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	[ALPHA] = LAYOUT(
-        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    /* */ KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    /* */ KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT,
-        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    /* */ KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-                                   AL_SFT,  AL_BSPC, /* */ AL_SPC,  AL_ENT
-    ),
-
-    [FUNC] = LAYOUT(
-        KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_PSCR, /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_SCRL, /* */ KC_NO,   KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT,
-        KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_PAUS, /* */ KC_NO,   KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT,
-                                   KC_APP,  KC_NO,   /* */ KC_TRNS, KC_TRNS
-    ),
-
-    [NAV] = LAYOUT(
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   /* */ KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
-        KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, KC_NO,   /* */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
-        KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, KC_NO,   /* */ KC_NO,   KC_NO,   NA_COMM, NA_DOT,  KC_DEL,
-                                   KC_NO,   KC_TRNS, /* */ KC_NO,   KC_NO
-    ),
-
-    [NUM] = LAYOUT(
-        KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  /* */ KC_NO,   KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT,
-        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, /* */ KC_NO,   KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT,
-                                   KC_DOT,  KC_0,    /* */ KC_NO,   KC_TRNS
+	[BASE] = LAYOUT(
+        KC_Q,    KC_W,    KC_E,   KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,   KC_P,
+        KC_A,    KC_S,    KC_D,   KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,   KC_QUOT,
+        KC_Z,    KC_X,    KC_C,   KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH,
+        MO(EXT), KC_LSFT, KC_SPC, MO(SYM)
     ),
 
     [SYM] = LAYOUT(
-        KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, /* */ KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, /* */ KC_NO,   KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT,
-        KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, /* */ KC_NO,   KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT,
-                                   KC_LPRN, KC_RPRN, /* */ KC_TRNS, KC_NO
+        KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN,
+        KC_GRV,  KC_TILD, KC_LCBR, KC_LPRN, KC_LBRC, KC_COLN, KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL,
+        KC_LT,   KC_GT,   KC_RCBR, KC_RPRN, KC_RBRC, KC_PIPE, KC_MINS, KC_EQL,  KC_PPLS, KC_NUBS,
+        MO(NUM), KC_NO,   KC_NO,   KC_TRNS
+    ),
+
+    [EXT] = LAYOUT(
+        KC_NO,   KC_NO,   KC_VOLD, KC_VOLU, KC_NO, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,
+        KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_NO, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,
+        KC_ESC,  KC_NO,   KC_NO,   KC_TAB,  KC_NO, KC_NO,   KC_ENT,  KC_NO,   KC_NO,   KC_DEL,
+        KC_TRNS, KC_NO,   KC_NO,   MO(NUM)
+    ),
+
+    [NUM] = LAYOUT(
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_NO,
+        KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_NO, KC_NO, KC_4, KC_5, KC_6, KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_0,  KC_1, KC_2, KC_3, KC_NO,
+        KC_TRNS, KC_NO,   KC_NO,   KC_TRNS
     ),
 };
 // clang-format on
 
-// left hand - two finger horizontal
-const uint16_t PROGMEM alpha_x_c[]        = { KC_X,    KC_C,                      COMBO_END };
-const uint16_t PROGMEM alpha_c_v[]        = { KC_C,    KC_V,                      COMBO_END };
+// left hand
+const uint16_t PROGMEM base_w_e[]      = { KC_W,    KC_E,   COMBO_END };
+const uint16_t PROGMEM base_x_c[]      = { KC_X,    KC_C,   COMBO_END };
 
-// left hand - two finger vertical
-const uint16_t PROGMEM alpha_a_z[]        = { KC_A,    KC_Z,                      COMBO_END };
-const uint16_t PROGMEM alpha_s_x[]        = { KC_S,    KC_X,                      COMBO_END };
-const uint16_t PROGMEM alpha_d_c[]        = { KC_D,    KC_C,                      COMBO_END };
-const uint16_t PROGMEM alpha_f_v[]        = { KC_F,    KC_V,                      COMBO_END };
-
-// left hand - three finger horizontal
-const uint16_t PROGMEM alpha_s_d_f[]      = { KC_S,    KC_D,    KC_F,             COMBO_END };
-const uint16_t PROGMEM alpha_x_c_v[]      = { KC_X,    KC_C,    KC_V,             COMBO_END };
-
-// left hand - three finger vertical
-const uint16_t PROGMEM alpha_q_a_z[]      = { KC_Q,    KC_A,    KC_Z,             COMBO_END };
-
-
-// right hand - two finger horizontal
-const uint16_t PROGMEM alpha_j_k[]        = { KC_J,    KC_K,                      COMBO_END };
-const uint16_t PROGMEM alpha_k_l[]        = { KC_K,    KC_L,                      COMBO_END };
-const uint16_t PROGMEM alpha_m_comm[]     = { KC_M,    KC_COMM,                   COMBO_END };
-const uint16_t PROGMEM alpha_comm_dot[]   = { KC_COMM, KC_DOT,                    COMBO_END };
-const uint16_t PROGMEM alpha_spc_ent[]    = { AL_SPC,  AL_ENT,                    COMBO_END };
-
-// right hand - two finger vertical
-const uint16_t PROGMEM alpha_j_m[]        = { KC_J,    KC_M,                      COMBO_END };
-const uint16_t PROGMEM alpha_k_comm[]     = { KC_K,    KC_COMM,                   COMBO_END };
-const uint16_t PROGMEM alpha_l_dot[]      = { KC_L,    KC_DOT,                    COMBO_END };
-const uint16_t PROGMEM alpha_quot_slsh[]  = { KC_QUOT, KC_SLSH,                   COMBO_END };
-
-// multi-combo holds
-const uint16_t PROGMEM alpha_d_f_c_v[]    = { KC_D,    KC_F,    KC_C,    KC_V,    COMBO_END };
-const uint16_t PROGMEM alpha_j_k_m_comm[] = { KC_J,    KC_K,    KC_M,    KC_COMM, COMBO_END };
+// right hand
+const uint16_t PROGMEM base_i_o[]      = { KC_I,    KC_O,   COMBO_END };
+const uint16_t PROGMEM base_comm_dot[] = { KC_COMM, KC_DOT, COMBO_END };
 
 combo_t key_combos[] = {
     // left hand
-    COMBO(alpha_x_c,        KC_TILD       ),
-    COMBO(alpha_c_v,        KC_GRV        ),
-    COMBO(alpha_a_z,        KC_LSFT       ),
-    COMBO(alpha_s_x,        KC_LGUI       ),
-    COMBO(alpha_d_c,        KC_LALT       ),
-    COMBO(alpha_f_v,        KC_LCTL       ),
-    COMBO(alpha_s_d_f,      KC_TAB        ),
-    COMBO(alpha_x_c_v,      KC_ESC        ),
-    COMBO(alpha_q_a_z,      QK_BOOT       ), // bootloader
-    COMBO(alpha_d_f_c_v,    LCTL(KC_LALT) ),
+    COMBO(base_w_e,      KC_ESC),
+    COMBO(base_x_c,      KC_TAB),
 
     // right hand
-    COMBO(alpha_j_k,        KC_MINS       ),
-    COMBO(alpha_k_l,        KC_SCLN       ),
-    COMBO(alpha_m_comm,     KC_EQL        ),
-    COMBO(alpha_comm_dot,   KC_BSLS       ),
-    COMBO(alpha_spc_ent,    MO(FUNC)      ),
-    COMBO(alpha_j_m,        KC_LCTL       ),
-    COMBO(alpha_k_comm,     KC_LALT       ),
-    COMBO(alpha_l_dot,      KC_LGUI       ),
-    COMBO(alpha_quot_slsh,  KC_LSFT       ),
-    COMBO(alpha_j_k_m_comm, LCTL(KC_LALT) ),
+    COMBO(base_i_o,      KC_BSPC),
+    COMBO(base_comm_dot, KC_ENT),
 };
