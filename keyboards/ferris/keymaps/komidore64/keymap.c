@@ -17,42 +17,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [SYM] = LAYOUT(
-        KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN,
-        KC_GRV,  KC_TILD, KC_LCBR, KC_LPRN, KC_LBRC, KC_COLN, KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL,
-        KC_LT,   KC_GT,   KC_RCBR, KC_RPRN, KC_RBRC, KC_PIPE, KC_MINS, KC_EQL,  KC_PPLS, KC_NUBS,
+        KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,       KC_ASTR,       KC_UNDS,       KC_SCLN,
+        KC_GRV,  KC_TILD, KC_LCBR, KC_LPRN, KC_LBRC, KC_COLN, OSM(MOD_LSFT), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL),
+        KC_LT,   KC_GT,   KC_RCBR, KC_RPRN, KC_RBRC, KC_PIPE, KC_MINS,       KC_EQL,        KC_PPLS,       KC_NUBS,
         MO(NUM), KC_NO,   KC_NO,   KC_TRNS
     ),
 
     [EXT] = LAYOUT(
-        KC_NO,   KC_NO,   KC_VOLD, KC_VOLU, KC_NO, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,
-        KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_NO, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,
-        KC_ESC,  KC_NO,   KC_NO,   KC_TAB,  KC_NO, KC_NO,   KC_ENT,  KC_NO,   KC_NO,   KC_DEL,
-        KC_TRNS, KC_NO,   KC_NO,   MO(NUM)
+        KC_NO,         KC_NO,         KC_VOLD,       KC_VOLU,       KC_NO, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,
+        OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), OSM(MOD_LSFT), KC_NO, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,
+        KC_ESC,        KC_NO,         KC_NO,         KC_TAB,        KC_NO, KC_NO,   KC_ENT,  KC_NO,   KC_NO,   KC_DEL,
+        KC_TRNS,       KC_NO,         KC_NO,         MO(NUM)
     ),
 
     [NUM] = LAYOUT(
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_NO,
-        KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_NO, KC_NO, KC_4, KC_5, KC_6, KC_NO,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_0,  KC_1, KC_2, KC_3, KC_NO,
-        KC_TRNS, KC_NO,   KC_NO,   KC_TRNS
+        KC_NO,         KC_NO,         KC_NO,         KC_NO,         KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_NO,
+        OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), OSM(MOD_LSFT), KC_NO, KC_NO, KC_4, KC_5, KC_6, KC_NO,
+        KC_NO,         KC_NO,         KC_NO,         KC_NO,         KC_NO, KC_0,  KC_1, KC_2, KC_3, KC_NO,
+        KC_TRNS,       KC_NO,         KC_NO,         KC_TRNS
     ),
 };
 // clang-format on
 
-// left hand
 const uint16_t PROGMEM base_w_e[]      = { KC_W,    KC_E,   COMBO_END };
 const uint16_t PROGMEM base_x_c[]      = { KC_X,    KC_C,   COMBO_END };
-
-// right hand
 const uint16_t PROGMEM base_i_o[]      = { KC_I,    KC_O,   COMBO_END };
 const uint16_t PROGMEM base_comm_dot[] = { KC_COMM, KC_DOT, COMBO_END };
 
 combo_t key_combos[] = {
-    // left hand
     COMBO(base_w_e,      KC_ESC),
     COMBO(base_x_c,      KC_TAB),
-
-    // right hand
     COMBO(base_i_o,      KC_BSPC),
     COMBO(base_comm_dot, KC_ENT),
 };
